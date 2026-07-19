@@ -13,8 +13,8 @@ export default function BugMutatedState() {
   let [count, setCount] = useState(0);
 
   function handleAdd() {
-    count++;
-    setCount(count);
+    // remove count++;
+    setCount(count + 1);
   }
 
   return (
@@ -26,4 +26,4 @@ export default function BugMutatedState() {
 }
 
 // Explanation:
-// (Write your explanation here)
+// The state variable was being changed directly by count, so React wasn't being notified correctly. Using setCount(count + 1) updates the state through React, which triggers a re-render.

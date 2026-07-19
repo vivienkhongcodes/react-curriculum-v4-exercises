@@ -11,12 +11,18 @@
 
   Use the commented "Explanation" section at the bottom of this lesson's components.
 */
+// Lines 15-32 are all belonging to the BugProps component.
+// Variable: message
+// Function: handleChange
+// returned JSX (<div>...</div>)
+
+import { useState } from 'react';
 
 export default function BugProps({ name = 'friend' }) {
-  let message = 'Hello, ' + name;
+  let [message, setMessage] = useState('Hello, ' + name);
 
   function handleChange() {
-    message = 'Hi, ' + name + '!';
+    setMessage('Hi, ' + name + '!');
   }
 
   return (
@@ -28,4 +34,4 @@ export default function BugProps({ name = 'friend' }) {
 }
 
 // Explanation:
-// (Write your explanation here)
+// Message was originally a regular Javascript variable, instead of React state. React did not track changes to it, so updating it did not re-render the component.  Using UseState and updating the state with setMessage allows React to re-render the component and display the updated greeting when the button is clicked.
